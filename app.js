@@ -40,7 +40,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Express Session
 app.use(session({
-    secret: 'secret',
+    secret: 'secret' || process.env.FACEBOOK_SECRET,
+    app_id: process.env.FACEBOOK_APP_ID,
     saveUninitialized: true,
     resave: true
 }));
