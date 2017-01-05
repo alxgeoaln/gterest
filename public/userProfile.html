@@ -1,0 +1,19 @@
+<h2 style="color:aliceblue">{[{userProfileList[0].author}]} gterests</h2>
+
+<div>
+    <div masonry ng-init="userProfileList">
+        <div class="masonry-brick pinterest" ng-repeat="user in userProfileList">
+            <div class="row">
+                <div class="col-xs-12">
+                    <p style="margin-top: 5px; margin-bottom: 0px;"  ><b>{[{user.title}]}</b></p>
+                </div>
+            </div>
+            <img ng-src="{[{user.image}]}" alt="aaa" style="width: 238px;">
+            <div class="row" style="margin-top: 5px;">
+                <div class="col-xs-12">
+                    <p style="font-size:11px; color: grey; margin-top: 5px;"><b>{[{user.author}]}</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

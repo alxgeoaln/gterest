@@ -1,0 +1,23 @@
+body {
+    padding-top: 50px;
+}
+.starter-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.custom-btn-link {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-decoration: none;
+}
+
+a:visited{
+    color: black;
+}
+
+#profileText:hover{
+    color: black;
+    font-size: 10px;
+    text-decoration: none;
+}

@@ -1,0 +1,66 @@
+<div>
+    <h1> Your Gterest</h1>
+
+    <div>
+        <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Add Gterest</button>
+    </div>
+
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">Add your new gterest</div>
+                <div class="modal-body">
+                    <img style="width: 238px;" ng-src="{[{image}]}" alt="{[{alt}]}"/>
+
+                    <div class="form-group" style="margin-top: 10px">
+                        <p class="pull-left">Upload image(http link)</p>
+                        <input type="text" class="form-control" ng-model="image">
+                    </div>
+                    <div class="form-group">
+                        <p class="pull-left">Title</p>
+                        <input type="text" class="form-control" ng-model="alt">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" data-dismiss="modal" ng-click="saveGterest();clearAddGterest(); ">Save</button>
+                    <button class="btn btn-danger" data-dismiss="modal" ng-click="clearAddGterest();">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div masonry>
+            <div class="masonry-brick pinterest" ng-repeat="gterest in gterestList">
+                <div class="row" style="margin-bottom: 0px;">
+                    <div class="col-xs-6">
+                        <p style="margin-top: 10px; margin-left: 110px;"><b>{[{gterest.title}]}</b></p>
+                    </div>
+                    <div class="col-xs-6">
+                        <md-button class="md-icon-button md-accent pull-right" aria-label="Favorite"
+                                   ng-click="deleteGterest(gterest);">
+                            <md-icon style="padding: 5px;" md-svg-icon="../img/close.svg"></md-icon>
+                        </md-button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <img ng-src="{[{gterest.image}]}" alt="aaa" style="width: 238px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p style="font-size:11px; color: grey; "><b>{[{gterest.author}]}</b></p>
+                    </div>
+                    <!--<div class="col-xs-6">-->
+                        <!--<md-button class="md-icon-button md-accent pull-left" aria-label="Favorite">-->
+                            <!--<md-icon style="padding: 2px;" md-svg-icon="../img/heart.svg"></md-icon>-->
+                            <!--</md-button>-->
+                            <!--<p style="margin-top: 11px"><b>0</b></p>-->
+                    <!--</div>-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>

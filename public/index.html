@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/masonry-docs.css">
+    <link rel="stylesheet" href="/css/angular-material.css">
+    <link rel="stylesheet" href="/css/likeButton.css">
+</head>
+<body style="background:#333;">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ro_RO/sdk.js#xfbml=1&version=v2.8&appId=682902008554644";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Gterest</a>
+
+            <a class="navbar-brand" href="#/gterest" style="margin-left: 50px; font-size: 15px;" ng-hide="loggedIn === false">Your Gterest</a>
+
+        </div>
+        <div id="navbar" class="collapse navbar-collapse pull-right">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+
+                <!--<li><a href="#">{{user.local.username}}{{user.facebook.name}}{{user.twitter.name}}</a></li>-->
+                <li><a href="#">{[{profileName.local.username}]}{[{profileName.twitter.name}]}{[{profileName.facebook.name}]}</a></li>
+                <li ng-hide="loggedIn === false"><a href="/login/logout">Logout</a></li>
+
+                <!--<li><a data-toggle="modal" data-target=".bd-example-modal-sm" href="#">Register</a></li>-->
+                <li ng-hide="loggedIn === true">
+                    <button type="button" class="btn btn-link custom-btn-link" style="text-decoration: none;"
+                            data-toggle="modal" data-target=".bs-example-modal-sm-register">Register
+                    </button>
+                </li>
+
+                <li ng-hide="loggedIn === true">
+                    <button type="button" class="btn btn-link custom-btn-link" style="text-decoration: none;"
+                            data-toggle="modal" data-target=".bs-example-modal-sm-login">Login
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="starter-template">
+        <!--#region Register Modal-->
+        <div ng-controller="registerCtrl" class="modal fade bs-example-modal-sm-register" tabindex="-1" role="dialog"
+             aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="animated fadeIn">Register</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="animated fadeIn">Username</label>
+                            <input type="text" placeholder="Username" ng-model="username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="animated fadeIn">Password</label>
+                            <input type="password" placeholder="Password" ng-model="password" class="form-control">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <md-button type="submit" ng-click="register()" class="md-raised md-primary pull-left">Submit</md-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--#endregion-->
+
+        <!--#region Login Modal-->
+        <form action="/login/" method="post">
+            <div class="modal fade bs-example-modal-sm-login" tabindex="-1" role="dialog"
+                 aria-labelledby="mySmallModalLabel">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="animated fadeIn">Login</h3>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="animated fadeIn">Username</label>
+                                <input type="text" placeholder="Username" name="username" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="animated fadeIn">Password</label>
+                                <input type="password" placeholder="Password" name="password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <md-button type="submit" class="md-raised md-primary pull-left">Login</md-button>
+                            <md-button class="md-icon-button md-primary" href="/auth/facebook" aria-label="More">
+                                <md-icon md-svg-icon="img/facebook.svg"></md-icon>
+                            </md-button>
+                            <md-button class="md-icon-button md-primary" href="/auth/twitter" aria-label="More">
+                                <md-icon md-svg-icon="img/twitter.svg"></md-icon>
+                            </md-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!--#endregion-->
+        <div ng-view>
+
+        </div>
+
+    </div>
+
+</div><!-- /.container -->
+<!--footer-->
+<footer></footer>
+
+<script src="../js/jquery-3.1.1.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/angular.js"></script>
+<script src="../js/angular-route.js"></script>
+<script src="../js/angular-cookies.js"></script>
+<script src="../model/module.js"></script>
+<script src="../js/masonry.pkgd.js"></script>
+<script src="../js/masonry-docs.min.js"></script>
+<script src="../js/angular-masonry.js"></script>
+<script src="../js/angular-animate.js"></script>
+<script src="../js/angular-aria.js"></script>
+<script src="../js/angular-material.js"></script>
+
+<script src="../route/route.js"></script>
+<script src="../controller/registerCtrl.js"></script>
+<script src="../controller/loggedInCtrl.js"></script>
+<script src="../controller/gterestCtrl.js"></script>
+<script src="../controller/allGterest.js"></script>
+<script src="../controller/userProfilCtrl.js"></script>
+</body>
+</html>
+<style>
+    body {
+        height: auto;
+    }
+
+    body {
+        margin-top: 1em;
+    }
+
+    .masonry-brick {
+        margin: 1em;
+        display: none;
+    }
+
+    .masonry-brick.loaded {
+        display: block;
+    }
+
+    .pinterest {
+        /*border: 1px solid black;*/
+        border-radius: 3%;
+        background-color: white;
+    }
+</style>
+<script type="text/javascript">
+    if (window.location.hash && window.location.hash == '#_=_') {
+        window.location.hash = '';
+    }
+</script>
