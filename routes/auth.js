@@ -54,7 +54,7 @@ passport.use(new FacebookStrategy({
 router.get('/twitter', passport.authenticate('twitter', {scope: ['email']}));
 router.get('/twitter/callback',
     passport.authenticate('twitter', { successRedirect: '/',
-        failureRedirect: '/penis' }));
+        failureRedirect: '/oops' }));
 
 
 passport.use(new TwitterStrategy({
