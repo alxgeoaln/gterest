@@ -43,7 +43,7 @@
                 <li><a href="/">Home</a></li>
 
                 <!--<li><a href="#">{{user.local.username}}{{user.facebook.name}}{{user.twitter.name}}</a></li>-->
-                <li><a href="#">{[{profileName.local.username}]}{[{profileName.twitter.name}]}{[{profileName.facebook.name}]}</a></li>
+                <li><a href="#">{{profileName.local.username}}{{profileName.twitter.name}}{{profileName.facebook.name}}</a></li>
                 <li ng-hide="loggedIn === false"><a href="/login/logout">Logout</a></li>
 
                 <!--<li><a data-toggle="modal" data-target=".bd-example-modal-sm" href="#">Register</a></li>-->

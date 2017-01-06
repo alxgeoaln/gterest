@@ -13,35 +13,18 @@
         <div class="masonry-brick pinterest" ng-repeat="gterest in allGterestList">
             <div class="row">
                 <div class="col-xs-12">
-                    <p style="margin-top: 5px;margin-bottom: 0;"><b>{[{gterest.title}]}</b></p>
+                    <p style="margin-top: 5px;margin-bottom: 0;"><b>{{gterest.title}}</b></p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <img ng-src="{[{gterest.image}]}" alt="aaa" style="width: 238px;">
+                    <img ng-src="{{gterest.image}}" alt="aaa" style="width: 238px;">
                 </div>
             </div>
-            <!--<div class="row">-->
-            <!--<div class="col-xs-6">-->
-            <!--<p style="margin-top: 5px;"><b>{[{gterest.title}]}</b></p>-->
-            <!--</div>-->
-            <!--<div class="col-xs-6">-->
-            <!--<a href="" class="text-center" title="If you like this, vote it up!" ng-click="doVote(gterest)">-->
-            <!--<i class="fa fa-2x"-->
-            <!--ng-class="(ply.userVotes[currUserId]==1) ? 'fa-heart' : 'fa-heart-o'"></i><br>-->
-            <!--<span class="slide-up" ng-repeat="raiting in allRaiting | filter: {_id: gterest._id} ">{[{raiting.raiting}]}</span>-->
-            <!--</a>-->
-            <!--<a href="#" class="text-center" ng-click="doVote(gterest)">-->
-            <!--<i class="glyphicon"-->
-            <!--ng-class="(isTrue==true) ? 'glyphicon-heart' : 'glyphicon-heart-empty'"></i>-->
-            <!--<span ng-model="like.votes">{[{gterest.raiting}]}</span>-->
-            <!--</a>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--<p style="font-size:11px; color: grey; "><b>{[{gterest.author}]}</b></p>-->
             <div class="row">
-                <div class="col-xs-12"><p style="font-size:11px; color: grey; "><b><a id="profileText" ng-href="#/userProfile"
-                                                                                      ng-click="seeProfile(gterest);">{[{gterest.author}]}</a></b>
+                <div class="col-xs-12"><p style="font-size:11px; color: grey; "><b><a id="profileText"
+                                                                                      ng-href="#/userProfile"
+                                                                                      ng-click="seeProfile(gterest);">{{gterest.author}}</a></b>
                 </div>
             </div>
 
